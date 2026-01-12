@@ -1,13 +1,17 @@
-locals {
-  env  = "dev"
-  name = "gani-server"
+provider "aws" {
+  region = local.region
+  
 }
-
 resource "aws_instance" "example" {
-  ami           = "ami-0abc123"
-  instance_type = "t3.micro"
+  ami   = local.ami
+  instance_type = local.instance_type
 
-  tags = {
-    Name = "${local.name}-${local.env}"
+tags = merge(
+  local.comman_tags,
+  {
+    Name  = local.env
+    ami = local.ami
   }
+
+)
 }

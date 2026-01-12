@@ -11,8 +11,11 @@ resource "aws_instance" "name" {
 
 lifecycle {
  #ignore_changes = [ tags ]
- ignore_changes = [ instance_type ]
+ #ignore_changes = [ instance_type ]
 }
 
+lifecycle {
+  create_before_destroy = true
+}
 
 }

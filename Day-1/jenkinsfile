@@ -17,7 +17,7 @@ pipeline {
         stage('terraform init') {
             
             steps {
-                dir('Day-1-basic-code') {
+                dir('Day-1') {
                sh 'terraform init'
             }
         }
@@ -25,7 +25,7 @@ pipeline {
            stage('terraform plan') {
             
             steps {
-                dir('Day-1-basic-code') {
+                dir('Day-1') {
                sh 'terraform plan'
             }
         }
@@ -33,7 +33,7 @@ pipeline {
         stage('terraform apply/destroy') {
             
             steps {
-                dir('Day-1-basic-code') {
+                dir('Day-1') {
                sh 'terraform ${ACTION} -auto-approve'
             }
         }
